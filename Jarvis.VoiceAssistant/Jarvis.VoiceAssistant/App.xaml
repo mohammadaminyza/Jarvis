@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Jarvis.VoiceAssistant.App">
+    <Application.Resources>
+
+        <ResourceDictionary>
+            <Color x:Key="PrBlue">#0C2D48</Color>
+            <Color x:Key="LiBlue">#2E8BC0</Color>
+
+            <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={x:StaticResource PrBlue},Light={x:StaticResource LiBlue}}"></Setter>
+                <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
+            </Style>
+
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>

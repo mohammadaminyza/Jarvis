@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:renders="clr-namespace:Jarvis.VoiceAssistant.Renders;assembly=Jarvis.VoiceAssistant"
+             x:Class="Jarvis.VoiceAssistant.MainPage">
+
+    <StackLayout Orientation="Vertical">
+        <Image Source="LoadingGif.gif" Aspect="AspectFit"
+               HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+               IsAnimationPlaying="True"/>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Button Text="شروع" BackgroundColor="Transparent" 
+                    x:Name="StartBtn"
+                    BorderColor="#145DA0" BorderWidth="1" 
+                    CornerRadius="5" Margin="20,0,0,0"
+                    Clicked="StartVoiceAssistant_OnClicked" />
+
+            <Button Text="پایان" BackgroundColor="Transparent" 
+                    x:Name="StopBtn"
+                    BorderColor="#B1D4E0" BorderWidth="1"
+                    CornerRadius="5"  Clicked="StopOrder_OnClicked"/>
+        </StackLayout>
+
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Margin="10,10,0,28">
+            <Image Source="SoundWave.gif" IsAnimationPlaying="True" Aspect="AspectFit" WidthRequest="100" />
+
+            <renders:FullEntry x:Name="Speecked" Placeholder="..." ColorBack="{AppThemeBinding Dark=#145DA0,Light=#B1D4E0}" ColorBorder="{AppThemeBinding Dark=#B1D4E0,Light=#0C2D48}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>
