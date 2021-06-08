@@ -11,13 +11,13 @@ namespace Jarvis.VoiceAssistant.Services
     public class SpeechSpeechRecognitionService : ISpeechRecognitionService
     {
         private List<Command> _commands = new List<Command>();
-        private ICommandService _commandService;
+        private ICommandService _commandService = new CommandService();
 
-        public SpeechSpeechRecognitionService(ICommandService commandService)
+        public SpeechSpeechRecognitionService()
         {
-            _commandService = commandService;
+            var commands = _commandService.GetAllCommands();
 
-            _commands.AddRange(_commandService.GetAllCommands().Result);
+            _commands.AddRange(commands);
 
             SpeechServiceHelper.Config(_commands);
         }
@@ -57,7 +57,12 @@ namespace Jarvis.VoiceAssistant.Services
 
         public async Task Response(string speech)
         {
-            var commandResult = _commands.SingleOrDefault(p => p.CommandSentence.ToLower().Trim() == speech).ResultSentence;
+            var commandResult = _commands.SingleOrDefault(p => p.CommandSentence == speech)?.ResultSentence;
+
+            if (commandResult == null || commandResult == "")
+            {
+                commandResult = "Oh Sorry, Didn't Get That";
+            }
 
             await TextToSpeech.SpeakAsync(commandResult);
         }

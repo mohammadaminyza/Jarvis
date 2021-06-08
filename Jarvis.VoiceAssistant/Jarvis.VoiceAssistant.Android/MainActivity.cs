@@ -24,6 +24,7 @@ namespace Jarvis.VoiceAssistant.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
+            Current = this;
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
@@ -51,9 +52,12 @@ namespace Jarvis.VoiceAssistant.Droid
 
             // method to specify other languages to be recognised here if desired  
             voiceIntent.PutExtra(RecognizerIntent.ExtraLanguage, Java.Util.Locale.Default);
+
+
             Task.WaitAll(Task.Run(() =>
             {
                 StartActivityForResult(voiceIntent, 10);
+                //Todo Don't Responce Until Activity Handeled
             }));
         }
 

@@ -8,7 +8,7 @@ namespace Jarvis.VoiceAssistant.Services
 {
     public interface ICommandService
     {
-        Task<IEnumerable<Command>> GetAllCommands();
+        IEnumerable<Command> GetAllCommands();
         Task<Command> GetCommand(Guid commandId);
     }
 }

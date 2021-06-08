@@ -12,7 +12,7 @@ namespace Jarvis.VoiceAssistant
 {
     public partial class MainPage : ContentPage
     {
-        private ISpeechRecognitionService _speechRecognitionService = new SpeechSpeechRecognitionService(new CommandService());
+        private ISpeechRecognitionService _speechRecognitionService = new SpeechSpeechRecognitionService();
         public MainPage()
         {
             InitializeComponent();

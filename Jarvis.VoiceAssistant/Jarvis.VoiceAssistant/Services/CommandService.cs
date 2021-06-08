@@ -11,19 +11,27 @@ namespace Jarvis.VoiceAssistant.Services
     class CommandService : ICommandService
     {
         private HttpClient _httpClient;
-        private Uri _apiUrl = new Uri("http://localhost:37214/api/command");
+        private Uri _apiUrl = new Uri("http://localhost:37214/api/command/");
         public CommandService()
         {
             _httpClient = new HttpClient();
         }
 
-        public async Task<IEnumerable<Command>> GetAllCommands()
+        public IEnumerable<Command> GetAllCommands()
         {
-            var result = await _httpClient.GetStringAsync(_apiUrl);
+            List<Command> obj = new List<Command>()
+            {
+                new Command()
+                {
+                    CommandId = Guid.Parse("c8bd76e6-4836-4c6e-892a-cff4d52cbbcc"),
+                    CommandSentence = "hello Jarvis",
+                    ResultSentence="Hello Boss"
+                }
+            };
 
-            var deserialize = JsonConvert.DeserializeObject<IEnumerable<Command>>(result);
+            //var deserialize = JsonConvert.DeserializeObject<IEnumerable<Command>>(result);
 
-            return deserialize;
+            return obj;
         }
 
         public async Task<Command> GetCommand(Guid commandId)
