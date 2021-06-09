@@ -25,11 +25,14 @@ namespace Jarvis.VoiceAssistant.Droid.DependencyServices
 
         }
 
-        public string Recognizer()
+        public string GetLastRecognizer()
+        {
+            return MainActivity.LastSpeechText;
+        }
+
+        public void Recognizer()
         {
             MainActivity.Current.RecognizeSpeech();
-
-            return MainActivity.LastSpeechText;
         }
 
     }

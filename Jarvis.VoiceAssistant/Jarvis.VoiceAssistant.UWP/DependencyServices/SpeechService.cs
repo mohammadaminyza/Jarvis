@@ -40,17 +40,20 @@ namespace Jarvis.VoiceAssistant.UWP.DependencyServices
             AddSentences(commands);
         }
 
-        public string Recognizer()
+        public void Recognizer()
         {
             _recognitionEngine.Recognize();
             _recognitionEngine.SpeechRecognized += RecognitionEngineOnSpeechRecognized;
-
-            return _lastRecognize;
         }
 
         private void RecognitionEngineOnSpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
             SendResult(e.Result.Text);
+        }
+
+        public string GetLastRecognizer()
+        {
+            return _lastRecognize;
         }
     }
 }

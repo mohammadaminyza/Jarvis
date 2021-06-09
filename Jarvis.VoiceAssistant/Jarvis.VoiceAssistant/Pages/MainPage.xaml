@@ -16,15 +16,15 @@
                     CornerRadius="5" Margin="20,0,0,0"
                     Clicked="StartVoiceAssistant_OnClicked" />
 
-            <Button Text="پایان" BackgroundColor="Transparent" 
+            <Button Text="پاسخ" BackgroundColor="Transparent" 
                     x:Name="StopBtn"
                     BorderColor="#B1D4E0" BorderWidth="1"
-                    CornerRadius="5"  Clicked="StopOrder_OnClicked"/>
+                    CornerRadius="5"  Clicked="ResponseOrder_OnClicked"/>
         </StackLayout>
 
 
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Margin="10,10,0,28">
-            <Image Source="SoundWave.gif" IsAnimationPlaying="True" Aspect="AspectFit" WidthRequest="100" />
+            <Image x:Name="SoundWave" Source="SoundWave.gif" IsAnimationPlaying="False" Aspect="AspectFit" WidthRequest="100" />
 
             <renders:FullEntry x:Name="Speecked" Placeholder="..." ColorBack="{AppThemeBinding Dark=#145DA0,Light=#B1D4E0}" ColorBorder="{AppThemeBinding Dark=#B1D4E0,Light=#0C2D48}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
         </StackLayout>

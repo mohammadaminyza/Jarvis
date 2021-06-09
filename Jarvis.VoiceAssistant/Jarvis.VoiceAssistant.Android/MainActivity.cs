@@ -13,7 +13,6 @@ namespace Jarvis.VoiceAssistant.Droid
     [Activity(Label = "Jarvis", Icon = "@drawable/JarvisIcon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-
         public static MainActivity Current { get; set; }
         public static string LastSpeechText { get; set; } = "";
 
@@ -35,6 +34,32 @@ namespace Jarvis.VoiceAssistant.Droid
         }
 
 
+        protected override void OnActivityResult(int requestCode, Result resultVal, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultVal, data);
+
+            if (requestCode == 10)
+            {
+                if (resultVal == Result.Ok)
+                {
+                    var matches = data.GetStringArrayListExtra(RecognizerIntent.ExtraResults);
+
+                    if (matches.Count != 0)
+                    {
+                        MainActivity.LastSpeechText = matches[0];
+                    }
+
+                    else
+                    {
+                        MainActivity.LastSpeechText = "";
+                    }
+                }
+
+
+            }
+
+        }
+
         public void RecognizeSpeech()
         {
             // create the voice intent  
@@ -53,34 +78,10 @@ namespace Jarvis.VoiceAssistant.Droid
             // method to specify other languages to be recognised here if desired  
             voiceIntent.PutExtra(RecognizerIntent.ExtraLanguage, Java.Util.Locale.Default);
 
-
-            Task.WaitAll(Task.Run(() =>
-            {
-                StartActivityForResult(voiceIntent, 10);
-                //Todo Don't Responce Until Activity Handeled
-            }));
+            StartActivityForResult(voiceIntent, 10);
         }
 
-        protected override void OnActivityResult(int requestCode, Result resultVal, Intent data)
-        {
-            if (requestCode == 10)
-            {
-                if (resultVal == Result.Ok)
-                {
-                    var matches = data.GetStringArrayListExtra(RecognizerIntent.ExtraResults);
-                    if (matches.Count != 0)
-                    {
-                        LastSpeechText = matches[0];
-                    }
-                    else
-                    {
-                        LastSpeechText = "";
-                    }
-                }
-            }
-
-            base.OnActivityResult(requestCode, resultVal, data);
-        }
 
     }
+
 }

@@ -7,7 +7,8 @@ namespace Jarvis.VoiceAssistant.Services
 {
     public interface ISpeechRecognitionService
     {
-        Task<string> Recognize();
-        Task Response(string speech);
+        Task Recognize();
+        string GetLastRecognize();
+        Task<string> Response(string speech);
     }
 }

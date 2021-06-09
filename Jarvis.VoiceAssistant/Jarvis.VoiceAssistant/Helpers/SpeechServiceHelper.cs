@@ -14,9 +14,14 @@ namespace Jarvis.VoiceAssistant.Helpers
             DependencyService.Get<ISpeechService>().ConfigSpeechRecognizer(commands);
         }
 
-        public static string Recognizer()
+        public static void Recognizer()
         {
-            return DependencyService.Get<ISpeechService>().Recognizer();
+            DependencyService.Get<ISpeechService>().Recognizer();
+        }
+
+        public static string GetLastRecognizer()
+        {
+            return DependencyService.Get<ISpeechService>().GetLastRecognizer();
         }
     }
 }

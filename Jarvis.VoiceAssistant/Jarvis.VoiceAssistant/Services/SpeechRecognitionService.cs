@@ -46,16 +46,14 @@ namespace Jarvis.VoiceAssistant.Services
         }
 
 
-        public async Task<string> Recognize()
+        public async Task Recognize()
         {
             await RequestAudioRecorderPermission();
 
-            var recognizeText = SpeechServiceHelper.Recognizer();
-
-            return recognizeText;
+            SpeechServiceHelper.Recognizer();
         }
 
-        public async Task Response(string speech)
+        public async Task<string> Response(string speech)
         {
             var commandResult = _commands.SingleOrDefault(p => p.CommandSentence == speech)?.ResultSentence;
 
@@ -65,6 +63,15 @@ namespace Jarvis.VoiceAssistant.Services
             }
 
             await TextToSpeech.SpeakAsync(commandResult);
+
+            return commandResult;
+        }
+
+        public string GetLastRecognize()
+        {
+            var recognizeText = SpeechServiceHelper.GetLastRecognizer();
+
+            return recognizeText;
         }
     }
 }
