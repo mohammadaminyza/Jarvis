@@ -15,10 +15,10 @@ using Jarvis.Domain.Entities;
 using Jarvis.VoiceAssistant.DependencyServices;
 using Jarvis.VoiceAssistant.Droid.DependencyServices;
 
-[assembly: Xamarin.Forms.Dependency(typeof(SpeechService))]
+[assembly: Xamarin.Forms.Dependency(typeof(SpeechManager))]
 namespace Jarvis.VoiceAssistant.Droid.DependencyServices
 {
-    class SpeechService : ISpeechService
+    class SpeechManager : ISpeechManager
     {
         public void ConfigSpeechRecognizer(IEnumerable<Command> commands)
         {

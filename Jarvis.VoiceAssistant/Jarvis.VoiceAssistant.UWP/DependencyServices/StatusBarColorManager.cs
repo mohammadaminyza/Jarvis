@@ -6,10 +6,10 @@ using Xamarin.Forms;
 using Jarvis.VoiceAssistant.UWP.Comman;
 
 
-[assembly: Xamarin.Forms.Dependency(typeof(Jarvis.VoiceAssistant.UWP.DependencyServices.StatusBarColorService))]
+[assembly: Xamarin.Forms.Dependency(typeof(Jarvis.VoiceAssistant.UWP.DependencyServices.StatusBarColorManager))]
 namespace Jarvis.VoiceAssistant.UWP.DependencyServices
 {
-    public class StatusBarColorService : IStatusBarColorService
+    public class StatusBarColorManager : IStatusBarColorManager
     {
         public void ChangeStatusBarColor(Color color)
         {

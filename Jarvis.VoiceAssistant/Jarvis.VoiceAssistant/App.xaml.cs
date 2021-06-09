@@ -51,13 +51,13 @@ namespace Jarvis.VoiceAssistant
         {
             if (RequestedTheme == OSAppTheme.Dark)
             {
-                DependencyService.Get<IStatusBarColorService>()
+                DependencyService.Get<IStatusBarColorManager>()
                     .ChangeStatusBarColor(darkMode);
             }
 
             else
             {
-                DependencyService.Get<IStatusBarColorService>()
+                DependencyService.Get<IStatusBarColorManager>()
                     .ChangeStatusBarColor(lightMode);
             }
         }

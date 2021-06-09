@@ -61,8 +61,9 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DependencyServices\SpeechService.cs" />
-    <Compile Include="DependencyServices\StatusBarColorService.cs" />
+    <Compile Include="DependencyServices\SpeechManager.cs" />
+    <Compile Include="DependencyServices\SqlitePathManager.cs" />
+    <Compile Include="DependencyServices\StatusBarColorManager.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renders\FullEntryRender.cs" />
     <Compile Include="Resources\Resource.designer.cs" />

@@ -7,10 +7,10 @@ using Jarvis.VoiceAssistant.DependencyServices;
 using Plugin.CurrentActivity;
 using Xamarin.Forms;
 
-[assembly: Xamarin.Forms.Dependency(typeof(Jarvis.VoiceAssistant.Droid.DependencyServices.StatusBarColorService))]
+[assembly: Xamarin.Forms.Dependency(typeof(Jarvis.VoiceAssistant.Droid.DependencyServices.StatusBarColorManager))]
 namespace Jarvis.VoiceAssistant.Droid.DependencyServices
 {
-    public class StatusBarColorService : IStatusBarColorService
+    public class StatusBarColorManager : IStatusBarColorManager
     {
         public void ChangeStatusBarColor(Color color)
         {

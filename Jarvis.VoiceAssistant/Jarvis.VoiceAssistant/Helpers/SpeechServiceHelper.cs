@@ -11,17 +11,17 @@ namespace Jarvis.VoiceAssistant.Helpers
     {
         public static void Config(IEnumerable<Command> commands)
         {
-            DependencyService.Get<ISpeechService>().ConfigSpeechRecognizer(commands);
+            DependencyService.Get<ISpeechManager>().ConfigSpeechRecognizer(commands);
         }
 
         public static void Recognizer()
         {
-            DependencyService.Get<ISpeechService>().Recognizer();
+            DependencyService.Get<ISpeechManager>().Recognizer();
         }
 
         public static string GetLastRecognizer()
         {
-            return DependencyService.Get<ISpeechService>().GetLastRecognizer();
+            return DependencyService.Get<ISpeechManager>().GetLastRecognizer();
         }
     }
 }

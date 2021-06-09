@@ -94,8 +94,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Comman\ExtensionsColorUwp.cs" />
-    <Compile Include="DependencyServices\SpeechService.cs" />
-    <Compile Include="DependencyServices\StatusBarColorService.cs" />
+    <Compile Include="DependencyServices\SpeechManager.cs" />
+    <Compile Include="DependencyServices\SqlitePathManger.cs" />
+    <Compile Include="DependencyServices\StatusBarColorManager.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

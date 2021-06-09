@@ -55,7 +55,7 @@ namespace Jarvis.VoiceAssistant.Services
 
         public async Task<string> Response(string speech)
         {
-            var commandResult = _commands.SingleOrDefault(p => p.CommandSentence == speech)?.ResultSentence;
+            var commandResult = _commands.SingleOrDefault(p => p.CommandSentence.Contains(speech))?.ResultSentence;
 
             if (commandResult == null || commandResult == "")
             {

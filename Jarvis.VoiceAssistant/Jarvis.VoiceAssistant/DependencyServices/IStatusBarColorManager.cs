@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace Jarvis.VoiceAssistant.DependencyServices
 {
-    public interface IStatusBarColorService
+    public interface IStatusBarColorManager
     {
         void ChangeStatusBarColor(Color color);
     }

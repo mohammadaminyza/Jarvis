@@ -9,10 +9,10 @@ using Jarvis.Domain.Entities;
 using Jarvis.VoiceAssistant.DependencyServices;
 using Jarvis.VoiceAssistant.UWP.DependencyServices;
 
-[assembly: Xamarin.Forms.Dependency(typeof(SpeechService))]
+[assembly: Xamarin.Forms.Dependency(typeof(SpeechManager))]
 namespace Jarvis.VoiceAssistant.UWP.DependencyServices
 {
-    class SpeechService : ISpeechService
+    class SpeechManager : ISpeechManager
     {
         private SpeechRecognitionEngine _recognitionEngine = new SpeechRecognitionEngine();
         private List<Command> _commands = new List<Command>();
