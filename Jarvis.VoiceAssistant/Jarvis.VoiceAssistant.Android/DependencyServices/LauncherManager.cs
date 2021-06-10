@@ -20,7 +20,7 @@ namespace Jarvis.VoiceAssistant.Droid.DependencyServices
     {
         public string GetRoot()
         {
-            var backingFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyMusic), "Music/");
+            var backingFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyMusic), "Music/Amir Tataloo - Ba To.flac");
 
             return backingFile;
         }

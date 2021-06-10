@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Jarvis.Domain.Entities;
+using Jarvis.VoiceAssistant.DependencyServices;
 using Jarvis.VoiceAssistant.Helpers;
 using Xamarin.Essentials;
+using Xamarin.Forms;
+
+using Command = Jarvis.Domain.Entities.Command;
 
 namespace Jarvis.VoiceAssistant.Services
 {
@@ -61,6 +65,8 @@ namespace Jarvis.VoiceAssistant.Services
             {
                 commandResult = "Oh Sorry, Didn't Get That";
             }
+
+            await Launcher.OpenAsync(DependencyService.Get<ILauncherManager>().GetRoot());
 
             await TextToSpeech.SpeakAsync(commandResult);
 
