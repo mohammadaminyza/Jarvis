@@ -9,8 +9,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Jarvis.VoiceAssistant.DependencyServices;
 using Jarvis.VoiceAssistant.Droid.DependencyServices;
+using Xamarin.Essentials;
 using Environment = System.Environment;
 
 [assembly: Xamarin.Forms.Dependency(typeof(LauncherManager))]
@@ -20,9 +22,9 @@ namespace Jarvis.VoiceAssistant.Droid.DependencyServices
     {
         public string GetRoot()
         {
-            var backingFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyMusic), "Music/Amir Tataloo - Ba To.flac");
+            var root = Path.Combine("/storage/emulated/0/");
 
-            return backingFile;
+            return root;
         }
     }
 }

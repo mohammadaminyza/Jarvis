@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Jarvis.Domain.Entities;
@@ -47,8 +48,17 @@ namespace Jarvis.VoiceAssistant.Services
             {
                 await Permissions.RequestAsync<Permissions.Speech>();
             }
+
+            if (await Permissions.CheckStatusAsync<Permissions.LaunchApp>() != PermissionStatus.Granted)
+            {
+                await Permissions.RequestAsync<Permissions.LaunchApp>();
+            }
         }
 
+        private async Task Speech(string speech)
+        {
+            await TextToSpeech.SpeakAsync(speech);
+        }
 
         public async Task Recognize()
         {
@@ -59,16 +69,11 @@ namespace Jarvis.VoiceAssistant.Services
 
         public async Task<string> Response(string speech)
         {
-            var commandResult = _commands.SingleOrDefault(p => p.CommandSentence.Contains(speech))?.ResultSentence;
+            var commandResult = _commands.SingleOrDefault(p => p.CommandSentence.Contains(speech))?.ResultSentence ?? "Oh Didn't Get That";
 
-            if (commandResult == null || commandResult == "")
-            {
-                commandResult = "Oh Sorry, Didn't Get That";
-            }
+            var rootAddress = LaunchHelper.GetRootPath();
 
-            await Launcher.OpenAsync(DependencyService.Get<ILauncherManager>().GetRoot());
-
-            await TextToSpeech.SpeakAsync(commandResult);
+            await Speech(commandResult);
 
             return commandResult;
         }
