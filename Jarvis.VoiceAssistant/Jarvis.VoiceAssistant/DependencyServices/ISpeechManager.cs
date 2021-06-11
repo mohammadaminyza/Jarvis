@@ -8,8 +8,7 @@ namespace Jarvis.VoiceAssistant.DependencyServices
 {
     public interface ISpeechManager
     {
-        void ConfigSpeechRecognizer(IEnumerable<Command> commands);
-        void Recognizer();
+        Task Recognizer();
         string GetLastRecognizer();
     }
 }

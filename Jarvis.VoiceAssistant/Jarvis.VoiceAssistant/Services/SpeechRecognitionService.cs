@@ -23,8 +23,6 @@ namespace Jarvis.VoiceAssistant.Services
             var commands = _commandService.GetAllCommands();
 
             _commands.AddRange(commands);
-
-            SpeechServiceHelper.Config(_commands);
         }
 
         private async Task RequestAudioRecorderPermission()

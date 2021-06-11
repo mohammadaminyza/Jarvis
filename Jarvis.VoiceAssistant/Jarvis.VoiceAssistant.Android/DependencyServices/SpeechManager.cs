@@ -20,19 +20,14 @@ namespace Jarvis.VoiceAssistant.Droid.DependencyServices
 {
     class SpeechManager : ISpeechManager
     {
-        public void ConfigSpeechRecognizer(IEnumerable<Command> commands)
-        {
-
-        }
-
         public string GetLastRecognizer()
         {
             return MainActivity.LastSpeechText;
         }
 
-        public void Recognizer()
+        public async Task Recognizer()
         {
-            MainActivity.Current.RecognizeSpeech();
+            await Task.WhenAll(Task.Run(() => MainActivity.Current.RecognizeSpeech()));
         }
 
     }

@@ -9,11 +9,6 @@ namespace Jarvis.VoiceAssistant.Helpers
 {
     public static class SpeechServiceHelper
     {
-        public static void Config(IEnumerable<Command> commands)
-        {
-            DependencyService.Get<ISpeechManager>().ConfigSpeechRecognizer(commands);
-        }
-
         public static void Recognizer()
         {
             DependencyService.Get<ISpeechManager>().Recognizer();
