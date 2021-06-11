@@ -26,7 +26,7 @@ namespace Jarvis.VoiceAssistant.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string dbPath = Path.Combine(_dbPath);
+            string dbPath = _dbPath;
 
             optionsBuilder
                 .UseSqlite($"Filename={dbPath}");

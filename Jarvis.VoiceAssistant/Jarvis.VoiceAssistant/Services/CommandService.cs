@@ -15,13 +15,13 @@ namespace Jarvis.VoiceAssistant.Services
     class CommandService : ICommandService
     {
         private HttpClient _httpClient;
-        private SqliteContext _sqlite;
+        //private SqliteContext _sqlite;
         private Uri _apiUrl;
 
         public CommandService()
         {
             _httpClient = new HttpClient();
-            _sqlite = new SqliteContext(SqliteHelper.GetSqlitePath());
+            //_sqlite = new SqliteContext(SqliteHelper.GetSqlitePath());
             _apiUrl = new Uri("http://localhost:37214/api/command/");
         }
 
@@ -46,14 +46,14 @@ namespace Jarvis.VoiceAssistant.Services
                     }
                 });
 
-                _sqlite.Commands.UpdateRange(obj);
+                //_sqlite.Commands.UpdateRange(obj);
             }
 
             else
             {
-                var localData = _sqlite.Commands.ToList();
+                //var localData = _sqlite.Commands.ToList();
 
-                obj.AddRange(localData);
+                //obj.AddRange(localData);
             }
 
             return obj;

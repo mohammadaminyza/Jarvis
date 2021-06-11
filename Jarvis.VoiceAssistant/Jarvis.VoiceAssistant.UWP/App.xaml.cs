@@ -13,10 +13,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Xamarin.Forms;
 using Windows.UI.Xaml.Navigation;
-using Application = Windows.UI.Xaml.Application;
-using Frame = Windows.UI.Xaml.Controls.Frame;
 
 namespace Jarvis.VoiceAssistant.UWP
 {

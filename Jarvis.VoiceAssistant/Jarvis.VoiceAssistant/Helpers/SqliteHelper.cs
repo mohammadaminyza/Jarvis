@@ -8,7 +8,7 @@ namespace Jarvis.VoiceAssistant.Helpers
 {
     public static class SqliteHelper
     {
-        public static string GetSqlitePath(string dbName = "JarvisLocalDB")
+        public static string GetSqlitePath(string dbName = "JarvisLocalDB.db3")
         {
             return DependencyService.Get<ISqlitePathManager>().GetSqlitePath(dbName);
         }
