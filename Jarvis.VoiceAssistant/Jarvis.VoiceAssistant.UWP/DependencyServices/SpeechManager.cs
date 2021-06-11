@@ -14,18 +14,11 @@ namespace Jarvis.VoiceAssistant.UWP.DependencyServices
 {
     class SpeechManager : ISpeechManager
     {
-        private SpeechRecognitionEngine _recognitionEngine = new SpeechRecognitionEngine();
         private List<Command> _commands = new List<Command>();
         private string _lastRecognize = "";
         private void AddSentences(IEnumerable<Command> commands)
         {
-            Choices sentences = new Choices();
-            var sentencesList = _commands.Select(n => n.CommandSentence).ToArray();
-            sentences.Add(sentencesList);
-            GrammarBuilder sentencesGrammarBuilder = new GrammarBuilder();
-            sentencesGrammarBuilder.Append(sentences);
-            Grammar sentencesGrammar = new Grammar(sentencesGrammarBuilder);
-            _recognitionEngine.LoadGrammarAsync(sentencesGrammar);
+            //TODO Speech Recognizer
         }
 
         private void SendResult(string commandText)
@@ -36,14 +29,13 @@ namespace Jarvis.VoiceAssistant.UWP.DependencyServices
         public void ConfigSpeechRecognizer(IEnumerable<Command> commands)
         {
             _commands.AddRange(commands);
-            _recognitionEngine.SetInputToDefaultAudioDevice();
+
             AddSentences(commands);
         }
 
         public void Recognizer()
         {
-            _recognitionEngine.Recognize();
-            _recognitionEngine.SpeechRecognized += RecognitionEngineOnSpeechRecognized;
+
         }
 
         private void RecognitionEngineOnSpeechRecognized(object sender, SpeechRecognizedEventArgs e)

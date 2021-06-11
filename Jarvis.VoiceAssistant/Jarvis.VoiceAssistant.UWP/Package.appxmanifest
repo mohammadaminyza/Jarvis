@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="0df6adda-3268-45cf-8a61-5750787ac447"
-    Publisher="CN=M-AMIN"
+    Name="6134bf70-4dd6-4461-bfdb-e079a3c938dc"
+    Publisher="CN=9fcf4d25-ac31-4ccb-8f4a-08b2953474a5"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="0df6adda-3268-45cf-8a61-5750787ac447" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Jarvis.VoiceAssistant.UWP</DisplayName>
-    <PublisherDisplayName>M-AMIN</PublisherDisplayName>
+    <PublisherDisplayName>9fcf4d25-ac31-4ccb-8f4a-08b2953474a5</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -32,18 +32,26 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="Jarvis.VoiceAssistant.UWP.App">
       <uap:VisualElements
-        DisplayName="Jarvis.VoiceAssistant.UWP"
+        DisplayName="Jarvis"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="Jarvis.VoiceAssistant.UWP"
+        Description="Jarvis Best Assistant Ever"
         BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\LargeTile.png" Square71x71Logo="Assets\SmallTile.png" ShortName="Jarvis">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
+            <uap:ShowOn Tile="wide310x150Logo" />
+            <uap:ShowOn Tile="square310x310Logo" />
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile>
+        <uap:SplashScreen Image="Assets\SplashScreen.png"  BackgroundColor="#ffffff"/>
       </uap:VisualElements>
     </Application>
   </Applications>
 
   <Capabilities>
     <Capability Name="internetClient" />
+    <Capability Name="internetClientServer"/>
+    <DeviceCapability Name="microphone"/>
   </Capabilities>
 </Package>
