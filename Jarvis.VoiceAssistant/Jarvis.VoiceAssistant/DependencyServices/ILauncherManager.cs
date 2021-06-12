@@ -8,5 +8,6 @@ namespace Jarvis.VoiceAssistant.DependencyServices
     public interface ILauncherManager
     {
         string GetRoot();
+        List<string> GetMusicsPaths();
     }
 }

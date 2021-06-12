@@ -67,13 +67,53 @@ namespace Jarvis.VoiceAssistant.Services
 
         public async Task<string> Response(string speech)
         {
-            var commandResult = _commands.SingleOrDefault(p => p.CommandSentence.Contains(speech))?.ResultSentence ?? "Oh Didn't Get That";
+            async Task MusicPlayerWithCommand(string command)
+            {
+                var songName = speech.ToLower().Replace("play music", "");
 
-            var rootAddress = LaunchHelper.GetRootPath();
+                await LauncherHelper.PlayMusic(songName);
+            }
 
-            await Speech(commandResult);
+            if (speech.Contains("play music"))
+            {
+                await MusicPlayerWithCommand("play music");
+            }
+            else if (speech.ToLower().Contains("play song"))
+            {
+                await MusicPlayerWithCommand("play song");
+            }
+            else if (speech.ToLower().Contains("play"))
+            {
+                await MusicPlayerWithCommand("play");
+            }
+            else if (speech.ToLower().Contains("search"))
+            {
+                var query = speech.ToLower().Replace("search", "").Trim();
 
-            return commandResult;
+                await LauncherHelper.SearchInGoogle(query);
+            }
+            else if (speech.ToLower().Contains("what time is it"))
+            {
+                await Speech($"It's {DateTime.Now.Hour} And {DateTime.Now.Minute} O'Clock");
+            }
+            else if (speech.ToLower().Contains("write note"))
+            {
+                //Todo Write Note And Fix Api
+            }
+            else
+            {
+                var commandResult =
+                    _commands.SingleOrDefault(p => p.CommandSentence == speech.ToLower().Trim())?.ResultSentence ??
+                    "Oh Didn't Get That";
+
+                var rootAddress = LaunchPathHelper.GetRootPath();
+
+                await Speech(commandResult);
+                return commandResult;
+
+            }
+
+            return "Done";
         }
 
         public string GetLastRecognize()

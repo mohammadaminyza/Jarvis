@@ -36,12 +36,12 @@ namespace Jarvis.VoiceAssistant.Services
                     new Command()
                     {
                         CommandId = Guid.Parse("c8bd76e6-4836-4c6e-892a-cff4d52cbbcc"),
-                        CommandSentence = "hello Jarvis",
+                        CommandSentence = "hello jarvis",
                         ResultSentence = "Hello Boss"
                     },new Command()
                     {
                         CommandId = Guid.Parse("c8bd76e6-4836-4c6e-892a-cff4d52cbbcd"),
-                        CommandSentence = "how are you?",
+                        CommandSentence = "how are you",
                         ResultSentence = "Oh, I'm Fine Thanks!"
                     }
                 });

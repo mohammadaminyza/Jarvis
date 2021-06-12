@@ -13,12 +13,23 @@ namespace Jarvis.VoiceAssistant.UWP.DependencyServices
 {
     class LauncherManager : ILauncherManager
     {
+        public List<string> GetMusicsPaths()
+        {
+            string[] mp3Musics = Directory.GetFiles(@"E:\Music", "*.mp3", SearchOption.AllDirectories);
+            string[] flacMusics = Directory.GetFiles(@"E:\Music", "*.flac", SearchOption.AllDirectories);
+
+            var allMusics = new List<string>();
+
+            allMusics.AddRange(mp3Musics.ToList());
+            allMusics.AddRange(flacMusics.ToList());
+
+            return allMusics;
+        }
+
         public string GetRoot()
         {
 
-            var backingFile = Path.Combine(@"E:\Music", "Amir Tataloo - Ba To.flac");
-
-            return backingFile;
+            return "C:\\";
         }
     }
 }
